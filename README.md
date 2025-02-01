@@ -16,11 +16,11 @@ A simple and responsive resume-building website using **HTML** and **CSS**. This
 ## Installation & Usage
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/resume-builder.git
+   git clone https://github.com/aspatil0/resume-builder.git
    ```
 2. Navigate to the project folder:
    ```sh
-   cd resume-builder
+   cd RESUMEX
    ```
 3. Open `index.html` in your browser.
 
@@ -41,4 +41,4 @@ This project is open-source and available under the **MIT License**.
 
 ---
 ### Contact
-For any inquiries, feel free to reach out to me at **[Your Email]** or connect on [LinkedIn](https://linkedin.com/in/yourprofile).
+For any inquiries, feel free to reach out to me at **[aspatil2904@gmail.com]** or connect on [LinkedIn](https://linkedin.com/in/adityarajpatil).
