@@ -36,8 +36,7 @@ resume-builder/
 ## Contributing
 If you'd like to contribute, please fork the repository and submit a pull request with your changes.
 
-## License
-This project is open-source and available under the **MIT License**.
+
 
 ---
 ### Contact
