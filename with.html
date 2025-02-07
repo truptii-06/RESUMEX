@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title >Resume Templates</title>
+    <link rel="stylesheet" href="style.css">
+    
+
+</head>
+<body>
+    <!-- Add Tesseract.js for OCR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.0.2/tesseract.min.js"></script>
+
+    <!-- Load FileSaver.js first -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <!-- Load docx.js from jsDelivr (correct version) -->
+    <script src="https://cdn.jsdelivr.net/npm/docx@7.1.0"></script>
+
+    <!-- Load script.js last -->
+    <script src="script.js" defer></script>
+    <div class="container">
+        <h1>Resume Templates</h1>
+        <div class="grid">
+
+            <div class="template">
+                <img src="image/with 1.jpg" alt="Template 1" class="template-img"
+                 onclick="downloadImageAsDoc('image/with 1.jpg')">
+            </div>
+
+            <div class="template">
+                <img src="image/with 2.jpg" alt="Template 2" class="template-img" 
+                onclick="downloadImageAsDoc('image/with 2.jpg')">
+            </div>
+
+            <div class="template">
+                <img src="image/with 3.jpg" alt="Template 3" class="template-img" 
+                onclick="downloadImageAsDoc('image/with 3.jpg')">
+            </div>
+
+            <div class="template">
+                <img src="image/With 4.jpg" alt="Template 4" class="template-img" 
+                onclick="downloadImageAsDoc('image/With 4.jpg')">
+            </div>
+
+            <div class="template">
+                <img src="image/With 5.jpg" alt="Template 5" class="template-img" 
+                onclick="downloadImageAsDoc('image/With 5.jpg')">
+            </div>
+
+            <div class="template">
+                <img src="image/With 6.jpg" alt="Template 6" class="template-img" 
+                onclick="downloadImageAsDoc('image/With 6.jpg')">
+            </div>
+
+            <div class="template">
+                <img src="image/With 7.jpg" alt="Template 7" class="template-img" 
+                onclick="downloadImageAsDoc('image/With 7.jpg')">
+            </div>
+
+            <div class="template">
+                <img src="image/With 8.jpg" alt="Template 8" class="template-img" 
+                onclick="downloadImageAsDoc('image/With 8.jpg')">
+            </div>
+
+            <div class="template">
+                <img src="image/With 9.jpg" alt="Template 9" class="template-img" 
+                onclick="downloadImageAsDoc('image/With 9.jpg')">
+            </div>
+
+        </div>
+    </div>
+    
+    <div id="editor" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:1000; overflow:auto;">
+        <div style="padding:20px;">
+            <h1>Edit Template</h1>
+            <textarea id="templateText" style="width:100%; height:300px;"></textarea>
+            <br>
+            <button onclick="saveAsDoc('template.docx')">Download as Docx</button>
+            <button onclick="closeEditor()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        async function editTemplate(imgName) {
+            const img = new Image();
+            img.src = imgName;
+            img.crossOrigin = 'Anonymous';
+
+            document.body.appendChild(img);
+            const { data: { text } } = await Tesseract.recognize(img);
+            
+            document.getElementById('templateText').value = text;
+            document.getElementById('editor').style.display = 'block';
+        }
+
+        async function saveAsDoc(fileName) {
+            const text = document.getElementById('templateText').value;
+            const doc = new docx.Document();
+            doc.addSection({
+                properties: {},
+                children: [
+                    new docx.Paragraph(text)
+                ],
+            });
+
+            const blob = await docx.Packer.toBlob(doc);
+            saveAs(blob, fileName);
+        }
+
+        function closeEditor() {
+            document.getElementById('editor').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
